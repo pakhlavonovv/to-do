@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.min.css">
+    <title>Todo List </title>
+    <style>
+        .disabled{
+            text-decoration: line-through;
+            color: rgb(70, 70, 70);
+        }
+    </style>
+</head>
+<body>
+    <div class="todo_list">
+        <div class="todo_wrapper">
+            <center><h1>TODO LIST</h1></center>
+            <div class="todo_action">
+                <input type="text" id="input" placeholder="Create task">
+                <button id="save">Save</button>
+            </div>
+            <ol id="result">  </ol>
+            <div class="todo_footer">
+                <p>Total: <span id="count">0</span></p>
+                <button class="btn" id="delete">Delete</button>
+            </div>
+        </div>
+    </div>
+    <script src="./js/index.js"></script>
+</body>
+</html>
