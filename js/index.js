@@ -28,8 +28,8 @@ function displayTask(){
     arr.forEach((item, index) => {
         let li = document.createElement("li")
         li.innerHTML = `<div class="output_li">
-        <input type="checkbox" class="todo-checkbox ${item.disabled ? "checked" : ""}"/>
-        <span class="${item.disabled ? "disabled" : ""}">${item.name}</span>
+        <input type="checkbox" class="todo-checkbox" ${item.disabled ? "checked" : ""}/>
+        <span id="todo-${index}" class="${item.disabled ? "disabled" : ""}" onclick="editTask(${index})">${item.name}</span>
         <div/>
         `
         li.querySelector(".todo-checkbox").addEventListener("change", function(){
@@ -46,6 +46,21 @@ function delete_fn(){
     arr = []
     saveStorage()
     displayTask()
+}
+function editTask(index){
+    const todo_task = document.getElementById(`todo-${index}`)
+    const input_element = document.createElement("input")
+    todo_task.replaceWith(input_element)
+    input_element.focus()
+    input_element.value = arr[index].name
+    input_element.addEventListener("change", function(){
+        let updated_text = input_element.value
+        if(updated_text){
+            arr[index].name = updated_text    
+            saveStorage()
+        }
+        displayTask()
+    })
 }
 function toggleTask(index){
     arr[index].disabled = !arr[index].disabled
